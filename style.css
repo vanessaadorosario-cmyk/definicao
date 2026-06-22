@@ -259,6 +259,17 @@ tbody tr:hover {
   background: rgba(68, 197, 243, 0.06);
 }
 
+/* Novo estilo para linhas de fallback */
+.fallback-row {
+  opacity: 0.6; /* Torna a linha um pouco transparente */
+  font-style: italic; /* Deixa o texto em itálico */
+}
+
+.fallback-row .source-tag {
+  background: rgba(255, 207, 107, 0.1); /* Fundo âmbar para o tag de fonte */
+  color: var(--amber); /* Texto âmbar */
+}
+
 .code {
   font-family: "IBM Plex Mono", monospace;
 }
