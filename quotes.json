@@ -1,9 +1,9 @@
 {
   "meta": {
-    "updated_at": "2026-06-22T00:47:08.432704+00:00",
+    "updated_at": "2026-06-22T01:15:00.000000+00:00",
     "source": "github-actions/yfinance+sina",
     "pipeline_status": "Atualização automática ativa",
-    "note": "Investing privado e B3 boletim exigem equivalência pública ou fallback até parser dedicado ser refinado."
+    "note": "Investing privado usa tickers públicos. Minério Sina é raspado. B3 volume D-1 tenta scraping (sujeito a quebras). FGP e DJSH são fallbacks sem fonte automática estável. CHINA50 usa proxy Shanghai Composite."
   },
   "assets": {
     "HG": {
@@ -103,8 +103,8 @@
       "auto": true
     },
     "VX": {
-      "price": NaN,
-      "change_pct": NaN,
+      "price": null,
+      "change_pct": null,
       "source": "yfinance",
       "auto": true
     },
