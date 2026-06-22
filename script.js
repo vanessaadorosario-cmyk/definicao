@@ -38,7 +38,7 @@ const assets = [
   { code: ".SSEC", name: "Shanghai Composite", group: "neutral", source: "yfinance", ticker: "000001.SS", weight: 0.65, threshold: 0.18 },
   { code: ".DJSH", name: "Dow Jones Shanghai", group: "neutral", source: "proxy", ticker: "DJSH_PROXY", weight: 0.6, threshold: 0.18 },
   { code: "CHINA50", name: "China A50 Futuros", group: "neutral", source: "proxy", ticker: "CN50_PROXY", weight: 0.75, threshold: 0.18 },
-  { code: "HSIQF6", name: "Hang Seng Futuros", group: "neutral", source: "yfinance", ticker: "^HSI", weight: 0.85, threshold: 0.2 },
+  { code: "HSIQF6", name: "Hang Seng Futuros", group: "neutral", source: "yfinance", ticker: "GC=F", weight: 0.85, threshold: 0.2 },
   { code: "GC", name: "Ouro Futuros", group: "neutral", source: "yfinance", ticker: "GC=F", weight: 0.7, threshold: 0.15 }
 ];
 
@@ -159,6 +159,12 @@ function renderTable(rows) {
     const groupClass = row.group === "risk" ? "group-risk" : row.group === "security" ? "group-security" : "group-neutral";
     const changeText = fmtPct(row.change_pct);
     const sourceStatus = row.auto ? "Automático" : "Fallback";
+
+    // Adiciona uma classe 'fallback-row' se o ativo não for automático
+    if (!row.auto) {
+      tr.classList.add("fallback-row");
+    }
+
     tr.innerHTML = `
       <td>${row.name}</td>
       <td class="code">${row.code}</td>
@@ -228,14 +234,38 @@ function renderChart() {
   const xAt = (index) => padding.left + (historyState.length === 1 ? plotWidth / 2 : (index / (historyState.length - 1)) * plotWidth);
   const yAt = (value) => padding.top + plotHeight - ((value - minValue) / range) * plotHeight;
 
+  // Desenha as linhas de grade e rótulos do eixo Y
   ctx.strokeStyle = "rgba(148, 169, 186, 0.16)";
   ctx.lineWidth = 1;
+  ctx.font = "10px Space Grotesk";
+  ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--muted'); // Usa a variável CSS --muted
+
   for (let step = 0; step <= 4; step += 1) {
     const y = padding.top + (plotHeight / 4) * step;
     ctx.beginPath();
     ctx.moveTo(padding.left, y);
     ctx.lineTo(padding.left + plotWidth, y);
     ctx.stroke();
+
+    // Adiciona rótulos ao eixo Y
+    const value = maxValue - (range / 4) * step;
+    ctx.fillText(value.toFixed(1), padding.left - 30, y + 4); // Ajuste a posição conforme necessário
+  }
+
+  // Adiciona rótulos ao eixo X (timestamps) - apenas para o primeiro e último ponto
+  if (historyState.length > 0) {
+    ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--muted');
+    ctx.textAlign = "left";
+    const firstEntry = historyState[0];
+    const firstDate = new Date(firstEntry.ts).toLocaleTimeString("pt-BR", { hour: '2-digit', minute: '2-digit' });
+    ctx.fillText(firstDate, xAt(0), rect.height - 10);
+
+    if (historyState.length > 1) {
+      ctx.textAlign = "right";
+      const lastEntry = historyState[historyState.length - 1];
+      const lastDate = new Date(lastEntry.ts).toLocaleTimeString("pt-BR", { hour: '2-digit', minute: '2-digit' });
+      ctx.fillText(lastDate, xAt(historyState.length - 1), rect.height - 10);
+    }
   }
 
   const lines = [
