@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Definicao Macro Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=1" />
+</head>
+<body>
+  <div class="background-grid" aria-hidden="true"></div>
+  <div class="page-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Dashboard de Macro Fluxo</p>
+        <h1>Atualizador automático de risco, segurança e neutro</h1>
+        <p class="hero-copy">
+          Linha verde = pressão de segurança, linha vermelha = pressão de risco,
+          linha azul = rastro de dominância e linha cinza = força dos indecisos.
+        </p>
+      </div>
+      <div class="hero-status card-glass">
+        <div class="status-row">
+          <span>Fonte principal</span>
+          <strong id="source-name">Aguardando</strong>
+        </div>
+        <div class="status-row">
+          <span>Última atualização</span>
+          <strong id="updated-at">--</strong>
+        </div>
+        <div class="status-row">
+          <span>Cobertura automática</span>
+          <strong id="coverage-rate">--</strong>
+        </div>
+        <p id="source-note" class="status-note">
+          Carregando mapa de ativos e dados automáticos.
+        </p>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="summary-grid">
+        <article class="metric-card card-glass">
+          <span class="metric-label">Linha Verde</span>
+          <strong id="line-green-value" class="metric-value">--</strong>
+          <p id="line-green-text" class="metric-footnote">Segurança comprada.</p>
+        </article>
+        <article class="metric-card card-glass">
+          <span class="metric-label">Linha Vermelha</span>
+          <strong id="line-red-value" class="metric-value">--</strong>
+          <p id="line-red-text" class="metric-footnote">Risco comprado.</p>
+        </article>
+        <article class="metric-card card-glass">
+          <span class="metric-label">Linha Azul</span>
+          <strong id="line-blue-value" class="metric-value">--</strong>
+          <p id="line-blue-text" class="metric-footnote">Rastro de força.</p>
+        </article>
+        <article class="metric-card card-glass">
+          <span class="metric-label">Linha Cinza</span>
+          <strong id="line-gray-value" class="metric-value">--</strong>
+          <p id="line-gray-text" class="metric-footnote">Neutralidade dominante.</p>
+        </article>
+      </section>
+
+      <section class="panel-grid">
+        <article class="signal-panel card-glass">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Leitura tática</p>
+              <h2>Direção do dólar e do índice</h2>
+            </div>
+            <span id="main-bias-tag" class="bias-tag bias-neutral">Neutro</span>
+          </div>
+          <div class="signal-stack">
+            <div>
+              <span class="signal-label">Cenário principal</span>
+              <strong id="main-signal">Aguardando dados</strong>
+            </div>
+            <div>
+              <span class="signal-label">Leitura da linha azul</span>
+              <strong id="blue-signal">Aguardando dados</strong>
+            </div>
+            <div>
+              <span class="signal-label">Leitura da linha cinza</span>
+              <strong id="gray-signal">Aguardando dados</strong>
+            </div>
+          </div>
+          <p id="signal-explainer" class="signal-explainer">
+            O motor compara a força acumulada dos ativos de segurança contra os ativos de risco.
+          </p>
+        </article>
+
+        <article class="chart-panel card-glass">
+          <div class="panel-head compact">
+            <div>
+              <p class="eyebrow">Linhas dinâmicas</p>
+              <h2>Radar de fluxo</h2>
+            </div>
+            <span id="market-turn" class="turn-text">Sem histórico</span>
+          </div>
+          <canvas id="market-chart" height="320"></canvas>
+        </article>
+      </section>
+
+      <section class="table-section card-glass">
+        <div class="panel-head compact">
+          <div>
+            <p class="eyebrow">Mapa dos ativos</p>
+            <h2>Risco, segurança e neutro</h2>
+          </div>
+          <span id="auto-status" class="small-badge">Modo automático</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Ativo</th>
+                <th>Ticker</th>
+                <th>Grupo</th>
+                <th>Var. %</th>
+                <th>Peso</th>
+                <th>Status</th>
+                <th>Fonte</th>
+              </tr>
+            </thead>
+            <tbody id="assets-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="bottom-grid">
+        <article class="card-glass notes-panel">
+          <div class="panel-head compact">
+            <div>
+              <p class="eyebrow">Cobertura</p>
+              <h2>O que atualiza automático</h2>
+            </div>
+          </div>
+          <ul id="coverage-list" class="coverage-list"></ul>
+        </article>
+
+        <article class="card-glass methodology-panel">
+          <div class="panel-head compact">
+            <div>
+              <p class="eyebrow">Metodologia</p>
+              <h2>Ponderação usada no painel</h2>
+            </div>
+          </div>
+          <ul class="method-list">
+            <li>Segurança subindo soma na linha verde e favorece dólar.</li>
+            <li>Risco subindo soma na linha vermelha e favorece índice.</li>
+            <li>Linha azul mede a persistência do lado dominante.</li>
+            <li>Linha cinza mede concentração de indecisão nos ativos neutros.</li>
+            <li>Minério usa limiar de 3% para só reagir em movimento relevante.</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js?v=1"></script>
+</body>
+</html>

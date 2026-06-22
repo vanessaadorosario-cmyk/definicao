@@ -1,0 +1,208 @@
+{
+  "meta": {
+    "updated_at": "2026-06-22T00:47:08.432704+00:00",
+    "source": "github-actions/yfinance+sina",
+    "pipeline_status": "Atualização automática ativa",
+    "note": "Investing privado e B3 boletim exigem equivalência pública ou fallback até parser dedicado ser refinado."
+  },
+  "assets": {
+    "HG": {
+      "price": 6.343,
+      "change_pct": -0.4942,
+      "source": "yfinance",
+      "auto": true
+    },
+    "CL": {
+      "price": 77.330002,
+      "change_pct": 0.953,
+      "source": "yfinance",
+      "auto": true
+    },
+    "ZS": {
+      "price": 1147.25,
+      "change_pct": 2.1821,
+      "source": "yfinance",
+      "auto": true
+    },
+    "YMH26": {
+      "price": 51905.0,
+      "change_pct": -0.1097,
+      "source": "yfinance",
+      "auto": true
+    },
+    "VALE.K": {
+      "price": 15.42,
+      "change_pct": -0.7083,
+      "source": "yfinance",
+      "auto": true
+    },
+    "PBR": {
+      "price": 16.75,
+      "change_pct": -0.2382,
+      "source": "yfinance",
+      "auto": true
+    },
+    "EWZ": {
+      "price": 33.73,
+      "change_pct": -1.114,
+      "source": "yfinance",
+      "auto": true
+    },
+    "XLF": {
+      "price": 53.57,
+      "change_pct": -0.8881,
+      "source": "yfinance",
+      "auto": true
+    },
+    "XLP": {
+      "price": 83.300003,
+      "change_pct": -0.4541,
+      "source": "yfinance",
+      "auto": true
+    },
+    "XLE": {
+      "price": 53.77,
+      "change_pct": -1.6462,
+      "source": "yfinance",
+      "auto": true
+    },
+    "XME": {
+      "price": 117.019997,
+      "change_pct": -1.1572,
+      "source": "yfinance",
+      "auto": true
+    },
+    "EEM": {
+      "price": 70.790001,
+      "change_pct": 3.2526,
+      "source": "yfinance",
+      "auto": true
+    },
+    "SOXX.O": {
+      "price": 639.450012,
+      "change_pct": 6.623,
+      "source": "yfinance",
+      "auto": true
+    },
+    ".BSESN": {
+      "price": 76802.898438,
+      "change_pct": -0.7842,
+      "source": "yfinance",
+      "auto": true
+    },
+    "VLO": {
+      "price": 236.300003,
+      "change_pct": -1.4472,
+      "source": "yfinance",
+      "auto": true
+    },
+    "DX": {
+      "price": 100.860001,
+      "change_pct": 0.0099,
+      "source": "yfinance",
+      "auto": true
+    },
+    "VX": {
+      "price": NaN,
+      "change_pct": NaN,
+      "source": "yfinance",
+      "auto": true
+    },
+    "USD/MXN": {
+      "price": 17.334999,
+      "change_pct": -0.1138,
+      "source": "yfinance",
+      "auto": true
+    },
+    "USD/NOK": {
+      "price": 9.69045,
+      "change_pct": -0.5159,
+      "source": "yfinance",
+      "auto": true
+    },
+    "USD/NZD": {
+      "price": 0.573329,
+      "change_pct": 0.3755,
+      "source": "derived",
+      "auto": true
+    },
+    "USD/AUD": {
+      "price": 0.700771,
+      "change_pct": 0.0769,
+      "source": "derived",
+      "auto": true
+    },
+    "USD/KRW": {
+      "price": 1531.459961,
+      "change_pct": -0.3967,
+      "source": "yfinance",
+      "auto": true
+    },
+    "USD/CNY": {
+      "price": 6.7687,
+      "change_pct": 0.0015,
+      "source": "yfinance",
+      "auto": true
+    },
+    "EUR/BRL": {
+      "price": 5.9042,
+      "change_pct": -0.4552,
+      "source": "yfinance",
+      "auto": true
+    },
+    ".SZI": {
+      "price": 16030.700195,
+      "change_pct": 0.943,
+      "source": "yfinance",
+      "auto": true
+    },
+    ".SSEC": {
+      "price": 4090.480957,
+      "change_pct": -0.4283,
+      "source": "yfinance",
+      "auto": true
+    },
+    "HSIQF6": {
+      "price": 23924.810547,
+      "change_pct": -1.5932,
+      "source": "yfinance",
+      "auto": true
+    },
+    "GC": {
+      "price": 4186.200195,
+      "change_pct": -0.8972,
+      "source": "yfinance",
+      "auto": true
+    },
+    "CHINA": {
+      "price": null,
+      "change_pct": -0.3595,
+      "source": "china-basket",
+      "auto": true
+    },
+    "FGP": {
+      "price": null,
+      "change_pct": null,
+      "source": "b3-fallback",
+      "auto": false
+    },
+    "VOL_D1": {
+      "price": null,
+      "change_pct": null,
+      "source": "b3-fallback",
+      "auto": false
+    },
+    ".DJSH": {
+      "price": null,
+      "change_pct": null,
+      "source": "proxy-fallback",
+      "auto": false
+    },
+    "CHINA50": {
+      "price": null,
+      "change_pct": null,
+      "source": "proxy-fallback",
+      "auto": false
+    }
+  }
+}
